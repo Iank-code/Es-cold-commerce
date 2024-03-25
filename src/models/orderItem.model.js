@@ -14,10 +14,6 @@ const orderItemSchema = new mongoose.Schema(
       ref: Product,
       required: true,
     },
-    total_price: {
-      type: String,
-      required: true,
-    },
     quantity: {
       type: Number,
       required: true,
