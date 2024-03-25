@@ -47,6 +47,22 @@ class ProductController {
       Logger.error(error);
     }
   }
+
+  async getAllProducts(req, res) {
+    try {
+      const allProducts = await Product.find({}).populate("categoryId");
+      if (!allProducts) {
+        res.send(404).json("No products found");
+      }
+
+      res.status(200).json({
+        message: "Products found",
+        products: allProducts,
+      });
+    } catch (error) {
+      Logger.error(error);
+    }
+  }
 }
 
 module.exports = new ProductController();
