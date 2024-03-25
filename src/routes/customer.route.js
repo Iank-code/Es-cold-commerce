@@ -6,7 +6,4 @@ router.post("/register", CustomerController.Register);
 router.post("/login", CustomerController.Login);
 // router.post("/user", authenticateRequest(), CustomerController.Profile);
 
-// Getting all user
-
-
 module.exports = router;

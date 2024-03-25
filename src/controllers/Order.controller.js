@@ -1,6 +1,6 @@
-const Customer = require("./../models/customer.model");
-const Order = require("./../models/order.model");
-const OrderItem = require("./../models/orderItem.model");
+const Customer = require("../models/customer.model");
+const Order = require("../models/order.model");
+const OrderItem = require("../models/orderItem.model");
 
 class OrderController {
   constructor() {}

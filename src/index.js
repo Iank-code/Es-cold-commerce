@@ -9,6 +9,7 @@ const Logger = require("./middlewares/logger/logger");
 const customerRoute = require("./routes/customer.route");
 const categoryRoute = require("./routes/category.route");
 const productRoute = require("./routes/product.route");
+const orderRoute = require("./routes/order.route");
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(cors());
 app.use("/api/customer", customerRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/product", productRoute);
+app.use("/api/order", orderRoute);
 
 app.listen(process.env.PORT || 5000, () => {
   Logger.debug("Server started");
