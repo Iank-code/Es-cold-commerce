@@ -2,8 +2,6 @@ const Customer = require("./../models/customer.model");
 const jwt = require("jsonwebtoken");
 const CryptoJS = require("crypto-js");
 const Logger = require("./../middlewares/logger/logger");
-const transporter = require("../helpers/helpers.js");
-const ejs = require("ejs");
 
 class CustomerController {
   constructor() {}
