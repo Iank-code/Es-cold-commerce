@@ -3,15 +3,40 @@ const Category = require("./category.model");
 
 const productSchema = new mongoose.Schema(
   {
-    product_id: { type: Number, unique: true, required: true },
-    name: { type: String, maxlength: 20, required: true },
-    description: { type: String, required: true },
-    category_id: { type: Number, ref: "Category", required: true },
-    image_url: { type: String, maxlength: 255 },
-    price: { type: Number, required: true },
-    stock: { type: Number, required: true },
-    temperature_requirement: { type: String, maxlength: 50 },
-    weight: { type: Number },
+    name: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    categoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Category,
+      required: true,
+    },
+    image_url: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: String,
+      required: true,
+    },
+    stock: {
+      type: Number,
+      required: true,
+    },
+    temperature_requirement: {
+      type: String,
+      maxlength: 50,
+      required: true,
+    },
+    weight: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
