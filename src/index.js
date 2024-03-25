@@ -7,6 +7,7 @@ const Logger = require("./middlewares/logger/logger")
 
 // Importing routes
 const customerRoute = require("./routes/customer.route");
+const categoryRoute = require("./routes/category.route");
 
 
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/customer", customerRoute);
+app.use("/api/category", categoryRoute);
 
 app.listen(process.env.PORT || 5000, () => {
   Logger.debug("Server started");

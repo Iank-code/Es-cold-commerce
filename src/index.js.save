@@ -1,0 +1,6 @@
+const express = require("expres")
+const cors = require("cors")
+const app = express()
+const mongoose = require("mongoose")
+const dotenv = require("dotenv
+")
