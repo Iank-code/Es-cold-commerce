@@ -63,6 +63,23 @@ class ProductController {
       Logger.error(error);
     }
   }
+
+  async getProductById(req, res) {
+    try {
+      const { id } = req.params;
+      const getProduct = await Product.findById(id).populate("categoryId");
+
+      if (!getProduct) {
+        res.status(404).json("Product not found");
+      }
+      res.status(200).json({
+        message: "Product found",
+        product: getProduct,
+      });
+    } catch (error) {
+      Logger.error(error);
+    }
+  }
 }
 
 module.exports = new ProductController();
