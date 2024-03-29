@@ -18,7 +18,7 @@ class CategoryController {
       Logger.error(error);
     }
   }
-  async getAllCategories(req, res) {
+  async getAllCategories(_, res) {
     try {
       const categories = await Category.find({});
       if (!categories) {
@@ -28,6 +28,17 @@ class CategoryController {
         message: "Categories found",
         categories,
       });
+    } catch (error) {
+      Logger.error(error);
+    }
+  }
+
+  async deleteCategory(req, res) {
+    try {
+      const { id } = req.params;
+      const getAndDeleteCategory = await Category.findByIdAndDelete(id);
+
+      res.status(200).json({ message: "Category deleted successfully" });
     } catch (error) {
       Logger.error(error);
     }
