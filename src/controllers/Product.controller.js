@@ -80,6 +80,18 @@ class ProductController {
       Logger.error(error);
     }
   }
+
+  // Delete a product
+  async deleteProduct(req, res) {
+    try {
+      const { id } = req.params;
+      await Product.findByIdAndDelete(id);
+
+      res.status(200).json({ message: "Product deleted successfully" });
+    } catch (error) {
+      Logger.error(error);
+    }
+  }
 }
 
 module.exports = new ProductController();
