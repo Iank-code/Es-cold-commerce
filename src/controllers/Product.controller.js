@@ -81,6 +81,47 @@ class ProductController {
     }
   }
 
+  // Update a product
+  // async updateProduct(req, res) {
+  //   try {
+  //     const { id } = req.params;
+  //     const {
+  //       name,
+  //       description,
+  //       price,
+  //       stock,
+  //       temperature_requirement,
+  //       weight,
+  //     } = req.body;
+  //   } catch (error) {
+  //     Logger.error(error);
+  //   }
+  // }
+
+  async updateProduct(req, res) {
+    try {
+      const { id } = req.params;
+      const updatedFields = req.body; // All fields to update are in req.body
+
+      // Find the product by ID and update it
+      const updatedProduct = await Product.findByIdAndUpdate(
+        id,
+        updatedFields,
+        { new: true }
+      );
+
+      if (!updatedProduct) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+
+      // If successful, send the updated product as a response
+      res.status(200).json(updatedProduct);
+    } catch (error) {
+      Logger.error(error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
   // Delete a product
   async deleteProduct(req, res) {
     try {
