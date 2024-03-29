@@ -99,6 +99,24 @@ class CustomerController {
       };
     }
   }
+
+  // Getting customer profile
+  async getCustomerProfile(_, res) {
+    try {
+      const id = req.user;
+      const getCustomer = await Customer.findById(id);
+
+      if (!getCustomer) {
+        res.status(404).json({ message: "Customer not found" });
+      }
+
+      res
+        .status(200)
+        .json({ message: "You profile has been found", data: getCustomer });
+    } catch (error) {
+      Logger.error(error);
+    }
+  }
 }
 
 module.exports = new CustomerController();
